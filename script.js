@@ -1,3 +1,7 @@
+var jogadorNome;
+
+jogadorNome = prompt("Digite o seu nome?")
+
 window.onload = function () {
   iniciar();
 
@@ -18,11 +22,11 @@ function iniciar() {
   alturaRaquete = 100;
 
   efeitoRaquete = 0.3;
-  velocidadeJogador2 = 5;
+  velocidadeJogador2 = 7;
 
   posicaoJogador1 = posicaoJogador2 = 40;
   posicaoBolaX = posicaoBolaY = 10;
-  velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 5
+  velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 7
   pontuacaoJogador1 = pontuacaoJogador2 = 0;
 
   folhaDesenho.addEventListener('mousemove', function (e) {
@@ -49,7 +53,7 @@ function desenhar() {
   areaDesenho.fillRect(larguraCampo - espessuraRaquete, posicaoJogador2, espessuraRaquete, alturaRaquete);
 
   //Escrever a pontuação dos jogadores
-  areaDesenho.fillText("Humano - " + pontuacaoJogador1 + " pontos", 100, 100);
+  areaDesenho.fillText(jogadorNome + " - " + pontuacaoJogador1 + " pontos", 100, 100);
   areaDesenho.fillText("Computador - " + pontuacaoJogador2 + " pontos", larguraCampo - 200, 100);
 
 }
@@ -97,6 +101,9 @@ function calcular() {
       //Ponto jogador 1
       pontuacaoJogador1 = pontuacaoJogador1 + 1;
 
+      if (pontuacaoJogador1 > 4) {
+        velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 12
+      }
       //Colocar a bola no centro
       continuar();
     }
